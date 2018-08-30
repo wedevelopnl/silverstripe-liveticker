@@ -2,6 +2,11 @@
 Name: liveticker
 ---
 
+SilverStripe\Control\Director:
+  rules:
+    graphql-liveticker:
+      Controller: 'SilverStripe\GraphQL\Controller'
+
 SilverStripe\GraphQL\Controller:
   schema:
     types:

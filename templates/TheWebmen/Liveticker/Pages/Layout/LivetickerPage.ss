@@ -1,4 +1,4 @@
-<div id="liveticker" data-graphql="{$BaseHref}graphql" data-pageid="$ID">
+<div id="liveticker" data-graphql="{$BaseHref}graphql-liveticker" data-pageid="$ID">
     <div class="liveticker-content">
 
     </div>

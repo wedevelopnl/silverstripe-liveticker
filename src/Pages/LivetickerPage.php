@@ -3,14 +3,7 @@
 namespace TheWebmen\Liveticker\Pages;
 
 use SilverStripe\Forms\GridField\GridField;
-use SilverStripe\Forms\GridField\GridFieldButtonRow;
-use SilverStripe\Forms\GridField\GridFieldConfig;
-use SilverStripe\Forms\GridField\GridFieldDeleteAction;
-use SilverStripe\Forms\GridField\GridFieldPaginator;
-use SilverStripe\Forms\GridField\GridFieldToolbarHeader;
-use Symbiote\GridFieldExtensions\GridFieldAddNewInlineButton;
-use Symbiote\GridFieldExtensions\GridFieldEditableColumns;
-use Symbiote\GridFieldExtensions\GridFieldTitleHeader;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use TheWebmen\Liveticker\Models\LivetickerMessage;
 
 class LivetickerPage extends \Page {
@@ -26,14 +19,7 @@ class LivetickerPage extends \Page {
         $fields = parent::getCMSFields();
 
         if($this->exists()){
-            $config = GridFieldConfig::create()
-                ->addComponent(new GridFieldButtonRow('before'))
-                ->addComponent(new GridFieldToolbarHeader())
-                ->addComponent(new GridFieldTitleHeader())
-                ->addComponent(new GridFieldEditableColumns())
-                ->addComponent(new GridFieldDeleteAction())
-                ->addComponent(new GridFieldPaginator(5))
-                ->addComponent(new GridFieldAddNewInlineButton());
+            $config = GridFieldConfig_RecordEditor::create();
             $fields->addFieldToTab('Root.Messages', GridField::create('Messages', 'Messages', $this->Messages(), $config));
         }
 
