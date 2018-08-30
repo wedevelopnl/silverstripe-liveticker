@@ -1,0 +1,10 @@
+---
+Name: liveticker
+---
+
+SilverStripe\GraphQL\Controller:
+  schema:
+    types:
+      livetickermessage: 'TheWebmen\Liveticker\GraphQL\LivetickerMessageTypeCreator'
+    queries:
+      readLivetickerMessages: 'TheWebmen\Liveticker\GraphQL\ReadLivetickerMessagesQueryCreator'
