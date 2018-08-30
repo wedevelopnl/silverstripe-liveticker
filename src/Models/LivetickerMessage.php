@@ -2,6 +2,7 @@
 
 namespace TheWebmen\Liveticker\Models;
 
+use SilverStripe\Forms\DropdownField;
 use SilverStripe\ORM\DataObject;
 use TheWebmen\Liveticker\Pages\LivetickerPage;
 
@@ -18,12 +19,14 @@ class LivetickerMessage extends DataObject {
     ];
 
     private static $has_one = [
-        'Page' => LivetickerPage::class
+        'Page' => LivetickerPage::class,
+        'Category' => LivetickerCategory::class
     ];
 
     private static $summary_fields = [
         'Title',
-        'Message'
+        'Message',
+        'Category.Title' => 'Category'
     ];
 
     private static $default_sort = 'Created DESC';
@@ -33,6 +36,8 @@ class LivetickerMessage extends DataObject {
         $fields = parent::getCMSFields();
 
         $fields->removeByName('PageID');
+        $categories = LivetickerCategory::get()->filter('PageID', $this->PageID)->map();
+        $fields->addFieldToTab('Root.Main', DropdownField::create('CategoryID', 'Category', $categories)->setHasEmptyDefault(true));
 
         return $fields;
     }

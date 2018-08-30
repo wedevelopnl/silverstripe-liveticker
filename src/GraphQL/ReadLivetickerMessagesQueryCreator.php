@@ -4,6 +4,7 @@ namespace TheWebmen\Liveticker\GraphQL;
 
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
+use TheWebmen\Liveticker\Models\LivetickerCategory;
 use TheWebmen\Liveticker\Models\LivetickerMessage;
 use SilverStripe\GraphQL\Pagination\PaginatedQueryCreator;
 use SilverStripe\GraphQL\Pagination\Connection;
@@ -18,7 +19,8 @@ class ReadLivetickerMessagesQueryCreator extends PaginatedQueryCreator
             ->setArgs([
                 'PageID' => ['type' => Type::int()],
                 'LastUpdate' => ['type' => Type::string()],
-                'DateType' => ['type' => Type::string()]
+                'DateType' => ['type' => Type::string()],
+                'Category' => ['type' => Type::string()]
             ])
             ->setDefaultLimit(5)
             ->setMaximumLimit(20)
@@ -35,6 +37,13 @@ class ReadLivetickerMessagesQueryCreator extends PaginatedQueryCreator
                 if(isset($args['LastUpdate'])){
                     $dateType = isset($args['DateType']) ? $args['DateType'] : 'GreaterThan';
                     $list = $list->filter('Created:' . $dateType, $args['LastUpdate']);
+                }
+
+                if(isset($args['Category'])){
+                    $category = LivetickerCategory::get()->filter('Slug', $args['Category'])->first();
+                    if($category){
+                        $list = $list->filter('CategoryID', $category->ID);
+                    }
                 }
 
                 return $list->filter('PageID', $args['PageID']);

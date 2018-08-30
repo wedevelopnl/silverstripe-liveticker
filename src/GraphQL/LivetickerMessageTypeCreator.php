@@ -22,6 +22,7 @@ class LivetickerMessageTypeCreator extends TypeCreator
             'Title' => ['type' => Type::string()],
             'Message' => ['type' => Type::string()],
             'Created' => ['type' => Type::string()],
+            'Category' => ['type' => $this->manager->getType('livetickercategory')]
         ];
     }
 }

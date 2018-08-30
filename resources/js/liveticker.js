@@ -8,14 +8,17 @@ function defer(method) {
   }
 }
 
-var query = `query ($PageID: Int!, $SortField: ReadLivetickerMessagesSortFieldType!, $SortDir: SortDirection!, $LastUpdate: String, $DateType: String, $Offset: Int) {
-  readLivetickerMessages(PageID: $PageID, LastUpdate: $LastUpdate, DateType: $DateType, offset: $Offset, sortBy: [{field: $SortField, direction: $SortDir}]) {
+var query = `query ($PageID: Int!, $Category: String, $SortField: ReadLivetickerMessagesSortFieldType!, $SortDir: SortDirection!, $LastUpdate: String, $DateType: String, $Offset: Int) {
+  readLivetickerMessages(PageID: $PageID, LastUpdate: $LastUpdate, Category: $Category, DateType: $DateType, offset: $Offset, sortBy: [{field: $SortField, direction: $SortDir}]) {
     edges {
       node {
         ID
         Title
         Message
         Created
+        Category {
+          Title
+        }
       }
     }
     pageInfo {
@@ -37,6 +40,8 @@ defer(function () {
   var lastUpdate = false;
   var oldestDate = false;
   var isFirstLoad = true;
+  var url = new URL(window.location.href);
+  var category = url.searchParams.get('category');
 
   /**
    * Add messages
@@ -76,6 +81,9 @@ defer(function () {
     if (lastUpdate) {
       data.LastUpdate = lastUpdate;
     }
+    if(category){
+      data.Category = category;
+    }
     graph(query, data).then(function (response) {
       var messages = response.readLivetickerMessages.edges;
       if (messages.length) {
@@ -100,6 +108,9 @@ defer(function () {
     if(oldestDate){
       data.LastUpdate = oldestDate;
       data.DateType = 'LessThan';
+    }
+    if(category){
+      data.Category = category;
     }
     graph(query, data).then(function (response) {
       var messages = response.readLivetickerMessages.edges;

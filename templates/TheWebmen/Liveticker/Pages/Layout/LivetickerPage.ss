@@ -1,3 +1,12 @@
+<% if $Categories %>
+    <ul>
+        <li><a href="$Link">Alle</a></li>
+        <% loop $Categories %>
+            <li><a href="$Link">$Title</a></li>
+        <% end_loop %>
+    </ul>
+<% end_if %>
+
 <div id="liveticker" data-graphql="{$BaseHref}graphql-liveticker" data-pageid="$ID">
     <div class="liveticker-content">
 
@@ -13,6 +22,9 @@
             <div>{%=o.ID%} {%=o.Created%}</div>
             {% if (o.Title) { %}
                 <strong>{%=o.Title%}</strong>
+            {% } %}
+            {% if (o.Category.Title) { %}
+                <div>{%=o.Category.Title%}</div>
             {% } %}
             {% if (o.Message) { %}
                 <p>{%=o.Message%}</p>
