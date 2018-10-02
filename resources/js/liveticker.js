@@ -15,6 +15,7 @@ var query = `query ($PageID: Int!, $Category: String, $SortField: ReadLiveticker
         ID
         Title
         Message
+        ExtraClasses
         Created
         Category {
           Title
