@@ -1,8 +1,8 @@
 <% if $Categories %>
     <ul>
-        <li><a href="$Link">Alle</a></li>
+        <li <% if not $ActiveCategory %>class="active" <% end_if %>><a href="$Link">Alle</a></li>
         <% loop $Categories %>
-            <li><a href="$Link">$Title</a></li>
+            <li <% if $Up.ActiveCategory.ID == $ID %>class="active"<% end_if %>><a href="$Link">$Title</a></li>
         <% end_loop %>
     </ul>
 <% end_if %>
