@@ -15,7 +15,8 @@ class LivetickerMessage extends DataObject {
 
     private static $db = [
         'Title' => 'Varchar(255)',
-        'Message' => 'Text'
+        'Message' => 'Text',
+        'ExtraClasses' => 'Varchar(255)'
     ];
 
     private static $has_one = [
@@ -36,6 +37,8 @@ class LivetickerMessage extends DataObject {
         $fields = parent::getCMSFields();
 
         $fields->removeByName('PageID');
+        $fields->removeByName('ExtraClasses');
+
         $categories = LivetickerCategory::get()->filter('PageID', $this->PageID)->map();
         $fields->addFieldToTab('Root.Main', DropdownField::create('CategoryID', 'Category', $categories)->setHasEmptyDefault(true));
 
