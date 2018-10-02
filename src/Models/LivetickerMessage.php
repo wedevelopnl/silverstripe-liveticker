@@ -37,7 +37,6 @@ class LivetickerMessage extends DataObject {
         $fields = parent::getCMSFields();
 
         $fields->removeByName('PageID');
-        $fields->removeByName('ExtraClasses');
 
         $categories = LivetickerCategory::get()->filter('PageID', $this->PageID)->map();
         $fields->addFieldToTab('Root.Main', DropdownField::create('CategoryID', 'Category', $categories)->setHasEmptyDefault(true));
