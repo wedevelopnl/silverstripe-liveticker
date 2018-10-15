@@ -69,6 +69,10 @@ defer(function () {
         }, 500, $template)
       }
     }
+    
+    content.find('> *').each(function(index, element){
+      $(element).css('order', (index + 1) * 10);
+    });
   }
 
   /**
