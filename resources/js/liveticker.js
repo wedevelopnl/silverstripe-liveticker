@@ -70,7 +70,7 @@ defer(function () {
       }
     }
     
-    content.find('> *').each(function(index, element){
+    content.find('> .liveticker-message').each(function(index, element){
       $(element).css('order', (index + 1) * 10);
     });
   }
