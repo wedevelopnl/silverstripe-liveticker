@@ -96,7 +96,7 @@ defer(function () {
         addMessages(messages, true, true);
       }
       loader.hide();
-      setTimeout(doUpdate, 500, true);
+      setTimeout(doUpdate, 10000, true);
     }).catch(function (error) {
       console.log(error)
     });
@@ -146,6 +146,6 @@ defer(function () {
   });
 
   loadOldMessages();
-  setTimeout(doUpdate, 500, true);
+  setTimeout(doUpdate, 10000, true);
 
 });
