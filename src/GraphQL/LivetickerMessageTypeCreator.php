@@ -26,4 +26,9 @@ class LivetickerMessageTypeCreator extends TypeCreator
             'Category' => ['type' => $this->manager->getType('livetickercategory')]
         ];
     }
+    
+    public function resolveMessageField($object, array $args, $context, $info)
+    {
+        return ShortcodeParser::get_active()->parse($object->Message);
+    }
 }
