@@ -5,6 +5,7 @@ namespace TheWebmen\Liveticker\GraphQL;
 use GraphQL\Type\Definition\Type;
 use SilverStripe\GraphQL\TypeCreator;
 use SilverStripe\GraphQL\Pagination\Connection;
+use SilverStripe\View\Parsers\ShortcodeParser;
 
 class LivetickerMessageTypeCreator extends TypeCreator
 {
