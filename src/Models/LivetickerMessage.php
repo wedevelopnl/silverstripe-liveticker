@@ -15,7 +15,7 @@ class LivetickerMessage extends DataObject {
 
     private static $db = [
         'Title' => 'Varchar(255)',
-        'Message' => 'Text',
+        'Message' => 'HTMLText',
         'ExtraClasses' => 'Varchar(255)'
     ];
 
@@ -26,7 +26,6 @@ class LivetickerMessage extends DataObject {
 
     private static $summary_fields = [
         'Title',
-        'Message',
         'Category.Title' => 'Category'
     ];
 
