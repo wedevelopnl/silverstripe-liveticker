@@ -27,7 +27,7 @@
                 <div>{%=o.Category.Title%}</div>
             {% } %}
             {% if (o.Message) { %}
-                <p>{%=o.Message%}</p>
+                <p>{%#o.Message%}</p>
             {% } %}
         </div>
     </script>
