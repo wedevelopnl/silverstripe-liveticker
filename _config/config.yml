@@ -1,16 +1,15 @@
 ---
 Name: liveticker
 ---
-
 SilverStripe\Control\Director:
   rules:
     graphql-liveticker:
       Controller: 'SilverStripe\GraphQL\Controller'
 
-SilverStripe\GraphQL\Controller:
-  schema:
-    types:
-      livetickermessage: 'TheWebmen\Liveticker\GraphQL\LivetickerMessageTypeCreator'
-      livetickercategory: 'TheWebmen\Liveticker\GraphQL\LivetickerCategoryTypeCreator'
-    queries:
-      readLivetickerMessages: 'TheWebmen\Liveticker\GraphQL\ReadLivetickerMessagesQueryCreator'
+#SilverStripe\GraphQL\Controller:
+#  schema:
+#    types:
+#      livetickermessage: 'TheWebmen\Liveticker\GraphQL\LivetickerMessageTypeCreator'
+#      livetickercategory: 'TheWebmen\Liveticker\GraphQL\LivetickerCategoryTypeCreator'
+#    queries:
+#      readLivetickerMessages: 'TheWebmen\Liveticker\GraphQL\ReadLivetickerMessagesQueryCreator'

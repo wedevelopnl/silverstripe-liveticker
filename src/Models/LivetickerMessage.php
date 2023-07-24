@@ -8,27 +8,35 @@ use TheWebmen\Liveticker\Pages\LivetickerPage;
 
 class LivetickerMessage extends DataObject {
 
+    /** @config */
     private static $singular_name = 'Message';
+
+    /** @config */
     private static $plural_name = 'Messages';
 
+    /** @config */
     private static $table_name = 'LivetickerMessage';
 
+    /** @config */
     private static $db = [
         'Title' => 'Varchar(255)',
         'Message' => 'HTMLText',
         'ExtraClasses' => 'Varchar(255)'
     ];
 
+    /** @config */
     private static $has_one = [
         'Page' => LivetickerPage::class,
         'Category' => LivetickerCategory::class
     ];
 
+    /** @config */
     private static $summary_fields = [
         'Title',
         'Category.Title' => 'Category'
     ];
 
+    /** @config */
     private static $default_sort = 'Created DESC';
 
     public function getCMSFields()

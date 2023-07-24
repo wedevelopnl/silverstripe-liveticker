@@ -1,0 +1,12 @@
+livetickermessage:
+  fields:
+    ID: ID
+    Title: String
+    Message: String
+    Created: String
+    ExtraClasses: String
+    Category: String
+
+livetickercategory:
+  fields:
+    Title: String

@@ -9,24 +9,32 @@ use TheWebmen\Liveticker\Pages\LivetickerPage;
 
 class LivetickerCategory extends DataObject {
 
+    /** @config */
     private static $singular_name = 'Category';
+
+    /** @config */
     private static $plural_name = 'Categories';
 
+    /** @config */
     private static $table_name = 'LivetickerCategory';
 
+    /** @config */
     private static $db = [
         'Title' => 'Varchar(255)',
         'Slug' => 'Varchar(255)'
     ];
 
+    /** @config */
     private static $has_one = [
         'Page' => LivetickerPage::class
     ];
 
+    /** @config */
     private static $has_many = [
         'Messages' => LivetickerMessage::class
     ];
 
+    /** @config */
     private static $summary_fields = [
         'Title'
     ];

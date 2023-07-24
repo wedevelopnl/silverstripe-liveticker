@@ -1,0 +1,10 @@
+---
+Name: liveticker-graphql
+Only:
+  classexists: 'SilverStripe\GraphQL\Schema\Schema'
+---
+SilverStripe\GraphQL\Schema\Schema:
+  schemas:
+    default:
+      src:
+        liveticker: 'thewebmen/silverstripe-liveticker: _graphql'

@@ -1,0 +1,2 @@
+resolvers:
+  - TheWebmen\Liveticker\Resolvers\LivertickerMessageResolver

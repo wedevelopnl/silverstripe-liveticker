@@ -1,0 +1,5 @@
+queries:
+  readLivetickerMessages:
+    type: livetickermessage
+    resolver: ['TheWebmen\Liveticker\Resolvers\LivertickerMessageResolver', 'readLivetickerMessages']
+
